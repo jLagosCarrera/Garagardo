@@ -3,7 +3,7 @@
 public class BartenderController : MonoBehaviour
 {
     private bool hasMoved = false;
-    private readonly float[] positions = { -5.5f, -2.5f, 2.5f, 5.5f };
+    private readonly float[] positions = { -3.5f, -1.5f, 1.5f, 3.5f };
     private int currentPosition;
 
     // Start is called before the first frame update
@@ -20,8 +20,6 @@ public class BartenderController : MonoBehaviour
 
     void OnSwipeDetected(Swipe direction, Vector2 swipeVelocity)
     {
-        float tileHeight;
-
         switch (direction)
         {
             case Swipe.Up:
@@ -33,6 +31,12 @@ public class BartenderController : MonoBehaviour
                     break;
                 }
 
+                if (currentPosition < positions.Length - 1)
+                {
+                    currentPosition++;
+                    transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
+                }
+
                 break;
             case Swipe.Down:
                 if (!hasMoved)
@@ -41,6 +45,12 @@ public class BartenderController : MonoBehaviour
                     transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
                     hasMoved = true;
                     break;
+                }
+
+                if (currentPosition > 0)
+                {
+                    currentPosition--;
+                    transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
                 }
 
                 break;
