@@ -20,43 +20,46 @@ public class BartenderController : MonoBehaviour
 
     void OnSwipeDetected(Swipe direction, Vector2 swipeVelocity)
     {
-        switch (direction)
+        if (!PauseMenu.isGamePaused)
         {
-            case Swipe.Up:
-                if (!hasMoved)
-                {
-                    currentPosition = 2;
-                    transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
-                    hasMoved = true;
+            switch (direction)
+            {
+                case Swipe.Up:
+                    if (!hasMoved)
+                    {
+                        currentPosition = 2;
+                        transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
+                        hasMoved = true;
+                        break;
+                    }
+
+                    if (currentPosition < positions.Length - 1)
+                    {
+                        currentPosition++;
+                        transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
+                    }
+
                     break;
-                }
+                case Swipe.Down:
+                    if (!hasMoved)
+                    {
+                        currentPosition = 1;
+                        transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
+                        hasMoved = true;
+                        break;
+                    }
 
-                if (currentPosition < positions.Length - 1)
-                {
-                    currentPosition++;
-                    transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
-                }
+                    if (currentPosition > 0)
+                    {
+                        currentPosition--;
+                        transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
+                    }
 
-                break;
-            case Swipe.Down:
-                if (!hasMoved)
-                {
-                    currentPosition = 1;
-                    transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
-                    hasMoved = true;
                     break;
-                }
-
-                if (currentPosition > 0)
-                {
-                    currentPosition--;
-                    transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
-                }
-
-                break;
-            default:
-                //Do nothing hehe
-                break;
+                default:
+                    //Do nothing hehe
+                    break;
+            }
         }
     }
 }
