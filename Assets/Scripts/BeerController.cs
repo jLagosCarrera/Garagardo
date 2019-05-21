@@ -25,8 +25,15 @@ public class BeerController : MonoBehaviour
     {
         if (collision.name == "BeerCollider")
         {
+            SoundManagerController.PlaySound("glassBreak");
             BartenderController.lifes--;
             Destroy(gameObject);
+        }
+
+        if (collision.name.StartsWith("Customer")){
+            SoundManagerController.PlaySound("suckUp");
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
-
 public class BartenderController : MonoBehaviour
 {
     Vector2 beerPos;
     public GameObject beer;
     public GameObject dieMenuUI;
+    public GameObject pauseButton;
     public static int lifes = 3;
     public static int points = 0;
-    public float throwRate = 0.5f;
+    public float throwRate = 0.25f;
     float nextBeer = 0.0f;
 
     private bool hasMoved = false;
@@ -17,9 +17,9 @@ public class BartenderController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hasMoved = false;
         lifes = 3;
         Time.timeScale = 1f;
-        SwipeManager.OnSwipeDetected += OnSwipeDetected;
     }
 
     // Update is called once per frame
@@ -27,59 +27,56 @@ public class BartenderController : MonoBehaviour
     {
         if (lifes == 0)
         {
+            pauseButton.SetActive(false);
             dieMenuUI.SetActive(true);
             Time.timeScale = 0f;
         }
-    }
 
-    void OnSwipeDetected(Swipe direction, Vector2 swipeVelocity)
-    {
-        if (!PauseMenu.isGamePaused)
+        if (SwipeManager.IsSwipingLeft())
         {
-            switch (direction)
+            if (hasMoved)
             {
-                case Swipe.Up:
-                    if (!hasMoved)
-                    {
-                        currentPosition = 2;
-                        transform.position = new Vector2(transform.position.x, positions[currentPosition]);
-                        hasMoved = true;
-                        break;
-                    }
+                if (Time.time > nextBeer)
+                {
+                    nextBeer = Time.time + throwRate;
+                    throwBeer();
+                }
+            }
+        }
 
-                    if (currentPosition < positions.Length - 1)
-                    {
-                        currentPosition++;
-                        transform.position = new Vector2(transform.position.x, positions[currentPosition]);
-                    }
+        if (SwipeManager.IsSwipingUp())
+        {
+            SoundManagerController.PlaySound("woosh");
+            if (!hasMoved)
+            {
+                currentPosition = 2;
+                transform.position = new Vector2(transform.position.x, positions[currentPosition]);
+                hasMoved = true;
+                return;
+            }
 
-                    break;
-                case Swipe.Down:
-                    if (!hasMoved)
-                    {
-                        currentPosition = 1;
-                        transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
-                        hasMoved = true;
-                        break;
-                    }
+            if (currentPosition < positions.Length - 1)
+            {
+                currentPosition++;
+                transform.position = new Vector2(transform.position.x, positions[currentPosition]);
+            }
+        }
 
-                    if (currentPosition > 0)
-                    {
-                        currentPosition--;
-                        transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
-                    }
+        if (SwipeManager.IsSwipingDown())
+        {
+            SoundManagerController.PlaySound("woosh");
+            if (!hasMoved)
+            {
+                currentPosition = 1;
+                transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
+                hasMoved = true;
+                return;
+            }
 
-                    break;
-                case Swipe.Left:
-                    if (hasMoved)
-                    {
-                        if (Time.time > nextBeer)
-                        {
-                            nextBeer = Time.time + throwRate;
-                            throwBeer();
-                        }
-                    }
-                    break;
+            if (currentPosition > 0)
+            {
+                currentPosition--;
+                transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
             }
         }
     }
@@ -89,5 +86,6 @@ public class BartenderController : MonoBehaviour
         beerPos = transform.position;
         beerPos += new Vector2(-0.3f, 0f);
         Instantiate(beer, beerPos, Quaternion.identity);
+        SoundManagerController.PlaySound("beerOpen");
     }
 }
