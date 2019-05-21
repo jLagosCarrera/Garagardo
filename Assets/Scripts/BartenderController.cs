@@ -6,6 +6,7 @@ public class BartenderController : MonoBehaviour
     public GameObject beer;
     public GameObject dieMenuUI;
     public static int lifes = 3;
+    public static int points = 0;
     public float throwRate = 0.5f;
     float nextBeer = 0.0f;
 
