@@ -5,3 +5,4 @@
 19/05/2019 - Handled player movement</br>
 20/05/2019 - Created menu scene and handled comportment</br>
 21/05/2019 - Created pause menu on game scene and handled comportment</br>
+21/05/2019 - Configured build and run for Android devices</br>
