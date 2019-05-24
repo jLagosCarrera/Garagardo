@@ -10,3 +10,4 @@
 21/05/2019 - Add customers random spawning and moving</br>
 22/05/2019 - Add music and sound effects</br>
 23/05/2019 - Created credits menu and scores menu. Also created points system.</br>
+24/05/2019 - Add gameplay, game screenshots and made bugfixes.
