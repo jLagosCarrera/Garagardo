@@ -32,6 +32,7 @@ public class BeerController : MonoBehaviour
 
         if (collision.name.StartsWith("Customer")){
             SoundManagerController.PlaySound("suckUp");
+            BartenderController.points += 10;
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }

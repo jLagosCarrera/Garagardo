@@ -1,24 +1,36 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using TMPro;
+using UnityEngine;
 public class BartenderController : MonoBehaviour
 {
     Vector2 beerPos;
     public GameObject beer;
     public GameObject dieMenuUI;
     public GameObject pauseButton;
+    public GameObject scoreDisplay;
+    public TextMeshProUGUI deadScore;
     public static int lifes = 3;
     public static int points = 0;
-    public float throwRate = 0.25f;
+    public float throwRate = 0.5f;
     float nextBeer = 0.0f;
 
+    private TextMeshProUGUI scoreText;
     private bool hasMoved = false;
     private readonly float[] positions = { -3.5f, -1.5f, 1.5f, 3.5f };
     private int currentPosition;
+    private bool deadLocked;
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreText = scoreDisplay.GetComponent<TextMeshProUGUI>();
         hasMoved = false;
+        deadLocked = false;
         lifes = 3;
+        points = 0;
         Time.timeScale = 1f;
     }
 
@@ -27,9 +39,15 @@ public class BartenderController : MonoBehaviour
     {
         if (lifes == 0)
         {
-            pauseButton.SetActive(false);
-            dieMenuUI.SetActive(true);
-            Time.timeScale = 0f;
+            if (!deadLocked)
+            {
+                deadLocked = true;
+                pauseButton.SetActive(false);
+                scoreDisplay.SetActive(false);
+                dieMenuUI.SetActive(true);
+                deadScore.text = "Final score: " + points;
+                Time.timeScale = 0f;
+            }
         }
 
         if (SwipeManager.IsSwipingLeft())
@@ -79,6 +97,8 @@ public class BartenderController : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, positions[currentPosition], transform.position.z);
             }
         }
+
+        scoreText.text = "Score: " + points;
     }
 
     void throwBeer()

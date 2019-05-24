@@ -135,6 +135,7 @@ d791aa6007fa3640be1164ea75bb087d TextMeshPro-2017.3-Runtime.dll:TMPro.TMP_StyleS
 827bdcf5ef003277958896fa7d5157c2 TextMeshPro-2017.3-Runtime.dll:TMPro.TMP_SubMesh
 00274a21279f5cb831ce20f895049e38 TextMeshPro-2017.3-Runtime.dll:TMPro.TMP_SubMeshUI
 bb629cf2901f4f9a6aec0a754789c951 TextMeshPro-2017.3-Runtime.dll:TMPro.TMP_Text
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.CreditsMenu
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
 a1ca1237bad0f30ea5ba8f4060929114 Assembly-CSharp.dll:TMPro.Examples.TMP_TextSelector_B
@@ -180,9 +181,9 @@ d241b953bd96426b51717342bb95894c TextMeshPro-2017.3-Editor.dll:TMPro.EditorUtili
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TMPro.TMP_DigitValidator
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TMPro.Examples.TeleType
 150a52fd22b65ab31e83547e6ca1953c Assembly-CSharp.dll:.CustomerController
-c3bfc659ec5149aaadad2f5f783f048a Assembly-CSharp.dll:.PauseMenu
+d682c88ef59f89309f2d1c698af41ce8 Assembly-CSharp.dll:.PauseMenu
 62fef86270a167c41a606cfca1ecc156 Assembly-CSharp.dll:TMPro.Examples.ShaderPropAnimator
-a22cc537a2b779e593c3c76ff1192f55 Assembly-CSharp.dll:.BartenderController
+8c40d449d06c4cdc3cfbb82e23b893fe Assembly-CSharp.dll:.BartenderController
 bd3f0ca738703903e759f77536ed74fd Assembly-CSharp.dll:TMPro.Examples.TMP_FrameRateCounter
 0784d4fd5b93bd75440d01eb2fac4233 Assembly-CSharp.dll:TMPro.Examples.VertexShakeA
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -232,3 +233,4 @@ d312d8a1daa24418d1bb60a838e5c2b5 Assembly-CSharp.dll:.SwipeManager
 8a874a8207a7664bdf44e61f28717254 Assembly-CSharp.dll:TMPro.Examples.SkewTextExample
 11319334e5365797f8056694f9b5dae4 Assembly-CSharp.dll:TMPro.Examples.ObjectSpin
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TMPro.Examples.SimpleScript
+147981ef957a2a6a48b5e6634950a687 Assembly-CSharp.dll:.ScoresMenu
