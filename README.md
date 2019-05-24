@@ -8,4 +8,5 @@
 21/05/2019 - Configured build and run for Android devices</br>
 21/05/2019 - Add beer throwing and 3 lifes system for the bartender</br>
 21/05/2019 - Add customers random spawning and moving</br>
-22/05/2019 - Add music and sound effects
+22/05/2019 - Add music and sound effects</br>
+23/05/2019 - Created credits menu and scores menu. Also created points system.</br>
